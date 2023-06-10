@@ -83,7 +83,7 @@ MAP_FILE = $(TARGET:.out=.map)
 .PHONY: compile-all
 compile-all: $(OBJS)
 $(OBJS): $(SRCS)
-	$(CC) -c -MMD $^ $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $(OBJS)
+	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
 
 # Complete build from object files generating map file
 .PHONY: build
