@@ -14,7 +14,7 @@ ifeq ($(PLATFORM),HOST)
 	SOURCES = 	./main.c 	\
 				./memory.c	\
 	
-	INCLUDES =	-I../common 	
+	INCLUDES =	-I./common 	
 
 else ifeq ($(PLATFORM),MSP432)
 	SOURCES = 	./main.c 	\
