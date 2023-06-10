@@ -23,8 +23,8 @@ else ifeq ($(PLATFORM),MSP432)
 				./startup_msp432p401r_gcc		\
 				./system_msp432p401r.c			\
 
-	INCLUDES = 	-I./common		\
-				-I./msp432		\
-				-I./CMSIS
+	INCLUDES = 	-I../common		\
+				-I../msp432		\
+				-I../CMSIS
 endif
 
