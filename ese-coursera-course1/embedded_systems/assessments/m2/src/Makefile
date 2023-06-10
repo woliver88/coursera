@@ -41,7 +41,7 @@ CFLAGS = 	-Wall	\
 # Platform / Architecture Specific Flags
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
-	CFLAGS_SPEC = 	-DHOST		
+	CFLAGS_SPEC = -DHOST
 
 else ifeq ($(PLATFORM),MSP432)
 	CC = arm-none-eabi-gcc
