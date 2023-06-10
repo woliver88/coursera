@@ -11,20 +11,20 @@
 
 # Platform Specific Source and Includes
 ifeq ($(PLATFORM),HOST)
-	SOURCES = 	./main.c 	\
+	SRCS = 	./main.c 	\
 				./memory.c	\
 	
 	INCLUDES =	-I../include/common 	
 
 else ifeq ($(PLATFORM),MSP432)
-	SOURCES = 	./main.c 	\
+	SRCS = 	./main.c 	\
 				./memory.c	\
 				./interrupts_msp432p401r_gcc.c	\
 				./startup_msp432p401r_gcc		\
 				./system_msp432p401r.c			\
 
-	INCLUDES = 	-I../common		\
-				-I../msp432		\
-				-I../CMSIS
+	INCLUDES = 	-I../include/common		\
+				-I../include/msp432		\
+				-I../include/CMSIS
 endif
 
