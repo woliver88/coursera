@@ -77,8 +77,8 @@ MAP_FILE = $(TARGET:.out=.map)
 # Dump the assemble code -S includes source code alongside
 # -d specifies that this is an object file
 %.asm: %.c
-	$(CC) -S $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
-	$(CC:gcc=objdump) -S $@
+	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o %.o
+	$(CC:gcc=objdump) -d -S %.o > $@
 
 %.o: %.c
 	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
