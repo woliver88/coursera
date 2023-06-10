@@ -78,7 +78,7 @@ MAP_FILE = $(TARGET:.out=.map)
 # -d specifies that this is an object file
 %.asm: %.c
 	$(CC) -S $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
-	$(CC:gcc=objdump) -d -S $@
+	$(CC:gcc=objdump) -S $@
 
 %.o: %.c
 	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
