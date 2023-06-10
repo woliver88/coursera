@@ -61,8 +61,12 @@ else ifeq ($(PLATFORM),MSP432)
 				--specs=$(SPECS)	
 endif
 
-# Define Object files
+# Define Object / Intermediate files
 OBJS = $(SRCS:.c=.o)
+ASMFILES = $(SRCS:.c=.asm)
+DFILES = $(SRCS:.c=.d)
+IFILES = $(SRCS:.c=.i)
+
 TARGET = c1m2.out
 MAP_FILE = $(TARGET:.out=.map)
 
@@ -95,4 +99,4 @@ $(TARGET): $(OBJS)
 # Remove all generated files
 .PHONY: clean
 clean: 
-	rm $(OBJS) $(MAP_FILE) *.i *.out *.asm
+	rm $(OBJS) $(MAP_FILE) $(DFILES) $(ASMFILES) $(IFILES) $(TARGET)
