@@ -41,25 +41,24 @@ CFLAGS = 	-Wall	\
 # Platform / Architecture Specific Flags
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
+	CFLAGS_SPEC = 	-DHOST	\			
+
+else ifeq ($(PLATFORM),MSP432)
+	CC = arm-none-eabi-gcc
 	
 	CPU := cortex-m4
 	ARCH := armv7e-m
 	SPECS := nosys.specs
-	
-	CFLAGS_SPEC = 	-DHOST	\
+
+	LD = msp432p401r.lds
+	CFLAGS_SPEC = 	-DMSP432	\
+					-T S(LD)	\
 				-mcpu=$(CPU)		\
 				-mthumb				\
 				-march=$(ARCH)		\
 				-mfloat-abi=hard	\
 				-mfpu=fpv4-sp-d16	\
-				--specs=$(SPECS)	\
-
-else ifeq ($(PLATFORM),MSP432)
-	CC = arm-none-eabi-gcc
-	
-	LD = msp432p401r.lds
-	CFLAGS_SPEC = 	-DMSP432	\
-					-T S(LD)
+				--specs=$(SPECS)	
 endif
 
 # Define Object files
