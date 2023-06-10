@@ -73,23 +73,23 @@ MAP_FILE = $(TARGET:.out=.map)
 # Dump the assemble code -S includes source code alongside
 # -d specifies that this is an object file
 %.asm: %.c
-	$(CC) -S $< $(CFLAGS) $(CFLAGS_SPEC) -o $@
+	$(CC) -S $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
 	$(CC:gcc=objdump) -d -S $@
 
 %.o: %.c
-	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) -o $@
+	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
 
 # Compile all object files
 .PHONY: compile-all
 compile-all: $(OBJS)
 $(OBJS): $(SRCS)
-	$(CC) -c -MMD $^ $(CFLAGS) $(CFLAGS_SPEC) -o $@
+	$(CC) -c -MMD $^ $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
 
 # Complete build from object files generating map file
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) -Map=MAP_FILE -o $@
+	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -Map=MAP_FILE -o $@
 	$(CC:gcc=size) $@
 
 # Remove all generated files
