@@ -49,7 +49,7 @@ ifeq ($(PLATFORM),HOST)
 	CFLAGS_SPEC = 	-DHOST	\
 				-mcpu=$(CPU)		\
 				-mthumb				\
-				-march=	$(ARCH)		\
+				-march=$(ARCH)		\
 				-mfloat-abi=hard	\
 				-mfpu=fpv4-sp-d16	\
 				--specs=$(SPECS)	\
