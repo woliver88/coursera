@@ -46,7 +46,7 @@ else ifeq ($(PLATFORM),MSP432)
 	ARCH := armv7e-m
 	SPECS := nosys.specs
 
-	LD = msp432p401r.lds
+	LD = ../msp432p401r.lds
 	CFLAGS_SPEC = -T $(LD)	\
 				-mcpu=$(CPU)		\
 				-mthumb				\
