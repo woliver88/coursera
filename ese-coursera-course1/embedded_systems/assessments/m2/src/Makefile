@@ -80,7 +80,7 @@ MAP_FILE = $(TARGET:.out=.map)
 	$(CC:gcc=objdump) -S $< > $@
 
 %.o: %.c
-	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
+	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Compile all object files
 .PHONY: compile-all
