@@ -92,7 +92,7 @@ $(OBJS): $(SRCS)
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -Xlinker -Map=$(MAP_FILE) -o $@
+	$(CC) -D$(PLATFORM) $(INCLUDES) $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
 	$(CC:gcc=size) $@
 
 # Remove all generated files
