@@ -33,12 +33,11 @@ CFLAGS = 	-Wall	\
 		 	-Werror	\
 			-g		\
 			-O0		\
-			-std=c99	\
+			-std=c99
 
 # Platform / Architecture Specific Flags
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
-	-DHOST
 
 else ifeq ($(PLATFORM),MSP432)
 	CC = arm-none-eabi-gcc
@@ -55,7 +54,6 @@ else ifeq ($(PLATFORM),MSP432)
 				-mfloat-abi=hard	\
 				-mfpu=fpv4-sp-d16	\
 				--specs=$(SPECS)	
-	-DMSP432
 endif
 
 # Bring in source files
@@ -82,19 +80,19 @@ MAP_FILE = $(TARGET:.out=.map)
 	$(CC:gcc=objdump) -S $< > $@
 
 %.o: %.c
-	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
+	$(CC) -c $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Compile all object files
 .PHONY: compile-all
 compile-all: $(OBJS)
 $(OBJS): $(SRCS)
-	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -o $@
+	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Complete build from object files generating map file
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -Xlinker -Map=$(MAP_FILE) -o $@
+	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -Xlinker -Map=$(MAP_FILE) -o $@
 	$(CC:gcc=size) $@
 
 # Remove all generated files
