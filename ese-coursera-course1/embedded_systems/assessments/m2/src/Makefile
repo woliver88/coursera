@@ -26,9 +26,6 @@
 # HOST / MSP432
 PLATFORM = HOST
 
-# Bring in source files
-include sources.mk
-
 # General Compiler Flags
 CPPFLAGs = -E
 
@@ -41,7 +38,7 @@ CFLAGS = 	-Wall	\
 # Platform / Architecture Specific Flags
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
-	CFLAGS_SPEC = -DHOST
+	-DHOST
 
 else ifeq ($(PLATFORM),MSP432)
 	CC = arm-none-eabi-gcc
@@ -51,15 +48,18 @@ else ifeq ($(PLATFORM),MSP432)
 	SPECS := nosys.specs
 
 	LD = msp432p401r.lds
-	CFLAGS_SPEC = 	-DMSP432	\
-					-T S(LD)	\
+	CFLAGS_SPEC = -T S(LD)	\
 				-mcpu=$(CPU)		\
 				-mthumb				\
 				-march=$(ARCH)		\
 				-mfloat-abi=hard	\
 				-mfpu=fpv4-sp-d16	\
 				--specs=$(SPECS)	
+	-DMSP432
 endif
+
+# Bring in source files
+include sources.mk
 
 # Define Object / Intermediate files
 OBJS = $(SRCS:.c=.o)
