@@ -94,7 +94,7 @@ $(OBJS): $(SRCS)
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -Map=MAP_FILE -o $@
+	$(CC) $^ $(CFLAGS) $(CFLAGS_SPEC) $(INCLUDES) -Map=$(MAP_FILE) -o $@
 	$(CC:gcc=size) $@
 
 # Remove all generated files
