@@ -47,7 +47,7 @@ else ifeq ($(PLATFORM),MSP432)
 	SPECS := nosys.specs
 
 	LD = msp432p401r.lds
-	CFLAGS_SPEC = -T S(LD)	\
+	CFLAGS_SPEC = -T $(LD)	\
 				-mcpu=$(CPU)		\
 				-mthumb				\
 				-march=$(ARCH)		\
