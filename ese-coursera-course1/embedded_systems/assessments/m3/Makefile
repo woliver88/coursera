@@ -27,8 +27,10 @@ CC=gcc
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-# $(CC) -v $^  -T $(LD) -Xlinker -Map=$(MAP_FILE) -o $@ - This is for VM gcc compiler - if submit use this
-	$(CC) -v $^ -T $(LD) $(LDFLAGS) -Xlinker -Map=$(MAP_FILE) -o $@
+# $(CC) -v $^  -T $(LD) -Xlinker -Map=$(MAP_FILE) -o $@ - This is for VM gcc compiler - if submit use this	
+# -N - do not page align data, do not make text read only unsure what this mean - throws error without due to space limits
+# -Wl passes comma separated arguments to 'ld' (linker binary)
+	$(CC) -v $^ -T $(LD) $(LDFLAGS) -Wl,-Map=$(MAP_FILE),-N -o $@
 
 # Clear non source files 
 .PHONY: clean
