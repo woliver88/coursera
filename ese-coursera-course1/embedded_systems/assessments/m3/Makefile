@@ -52,4 +52,4 @@ $(TARGET): $(OBJS)
 # Clear non source files 
 .PHONY: clean
 clean:
-	rm $(OBJS) $(MAP_FILE) $(ASMFILES) *.dm
+	rm $(OBJS) $(MAP_FILE) $(ASMFILES) $(TARGET)
