@@ -3,7 +3,7 @@ SCRS = 	./misc.c \
 		./main.c
 
 # Output files
-TARGET = program.OUT
+TARGET = program.out
 OBJS = $(SCRS:.c=.o)
 MAP_FILE = $(TARGET:.out=.map)
 ASMFILES = $(SRCS:.c=.asm)
