@@ -80,6 +80,7 @@ MAP_FILE = $(TARGET:.out=.map)
 	$(CC:gcc=objdump) -S $< > $@
 
 %.o: %.c
+# -MMD outputs a dependcancy file, -MM outputs to stdout (the terminal logs)
 	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Compile all object files
