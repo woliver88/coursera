@@ -47,7 +47,7 @@ $(TARGET): $(OBJS)
 # $(CC) -v $^  -T $(LD) -Xlinker -Map=$(MAP_FILE) -o $@ - This is for VM gcc compiler - if submit use this	
 # -N - do not page align data, do not make text read only unsure what this mean - throws error without due to space limits
 # -Wl passes comma separated arguments to 'ld' (linker binary)
-	$(CC) -v $^ $(CFLAGS) $(CFLAGS_SPEC) -Wl,-Map=$(MAP_FILE) -o $@
+	$(CC) -v $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
 
 # Clear non source files 
 .PHONY: clean
