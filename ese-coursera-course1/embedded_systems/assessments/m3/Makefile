@@ -11,6 +11,9 @@ ASMFILES = $(SRCS:.c=.asm)
 
 # Linker file
 LD = ./msp432p401r.lds
+# Added 
+LDFLAGS = -L /lib/x86_64-linux-gnu/libgcc_s.so.1
+
 
 # Compiler
 CC=gcc
@@ -25,7 +28,7 @@ CC=gcc
 build: $(TARGET)
 $(TARGET): $(OBJS)
 # $(CC) -v $^  -T $(LD) -Xlinker -Map=$(MAP_FILE) -o $@ - This is for VM gcc compiler - if submit use this
-	$(CC) -v $^ -T $(LD) -Xlinker -Map=$(MAP_FILE) -o $@
+	$(CC) -v $^ -T $(LD) $(LDFLAGS) -Xlinker -Map=$(MAP_FILE) -o $@
 
 # Clear non source files 
 .PHONY: clean
