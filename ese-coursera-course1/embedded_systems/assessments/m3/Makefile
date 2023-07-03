@@ -13,7 +13,7 @@ ASMFILES = $(SRCS:.c=.asm)
 LD = ./msp432p401r.lds
 
 # Compiler
-CC=GCC
+CC=gcc
 
 # To create .o objectfiles 
 %.o: %.c
