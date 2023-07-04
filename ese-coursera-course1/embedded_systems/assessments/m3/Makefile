@@ -44,10 +44,22 @@ CC = arm-none-eabi-gcc
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-# $(CC) -v $^  -T $(LD) -Xlinker -Map=$(MAP_FILE) -o $@ - This is for VM gcc compiler - if submit use this	
-# -N - do not page align data, do not make text read only unsure what this mean - throws error without due to space limits
 # -Wl passes comma separated arguments to 'ld' (linker binary)
 	$(CC) -v $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
+
+.PHONY: memory
+memory:
+# -v will order by numberic address value (default is -n order by name)
+	nm -v $(TARGET)
+
+.PHONY: objd 
+objd:
+# Use: make objd FILE=main.o
+# objdump displays information from objfile
+# -S mixes disassemble code with source code
+# -d displays assembler code for all executable sections
+# -t displays contents of symbol table
+	objdump -S $(FILE)
 
 # Clear non source files 
 .PHONY: clean
