@@ -59,7 +59,7 @@ objd:
 # -S mixes disassemble code with source code
 # -d displays assembler code for all executable sections
 # -t displays contents of symbol table
-	objdump -S $(FILE)
+	$(CC:gcc=objdump) -S $(FILE)
 
 # Clear non source files 
 .PHONY: clean
