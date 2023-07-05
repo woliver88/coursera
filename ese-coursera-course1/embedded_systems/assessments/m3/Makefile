@@ -52,14 +52,23 @@ memory:
 # -v will order by numberic address value (default is -n order by name)
 	nm -v $(TARGET)
 
-.PHONY: objd 
-objd:
-# Use: make objd FILE=main.o
+
+
+# Use: make objd FILE=main.o FLAG = "-S | -t | -d "
+
 # objdump displays information from objfile
 # -S mixes disassemble code with source code
 # -d displays assembler code for all executable sections
 # -t displays contents of symbol table
-	$(CC:gcc=objdump) -S $(FILE)
+
+# Typical appearance for -S:
+# 48 0f54	adds r3, #0
+# '48' refers to location in memory (hex)
+# following four '0f65' refer to two bytes of code (hex)
+# Instruction in native assembly follows
+.PHONY: objd 
+objd:
+	$(CC:gcc=objdump) $(FLAG) $(FILE)
 
 # Clear non source files 
 .PHONY: clean
