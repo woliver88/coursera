@@ -52,8 +52,8 @@ memory:
 # -v will order by numberic address value (default is -n order by name)
 	nm -v $(TARGET)
 
-
-
+.PHONY: objd 
+objd:
 # Use: make objd FILE=main.o FLAG = "-S | -t | -d "
 
 # objdump displays information from objfile
@@ -66,8 +66,6 @@ memory:
 # '48' refers to location in memory (hex)
 # following four '0f65' refer to two bytes of code (hex)
 # Instruction in native assembly follows
-.PHONY: objd 
-objd:
 	$(CC:gcc=objdump) $(FLAG) $(FILE)
 
 # Clear non source files 
