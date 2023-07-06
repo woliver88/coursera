@@ -29,17 +29,17 @@ unsigned char sort_array(unsigned char array[], unsigned int array_size)
 {
   for (int i = 0; i < array_size; ++i)
   {
-    int min_idx = i;
+    int max_idx = i;
     for (int j = i; j < array_size; ++j)
     {
-      if (array[j] < array[min_idx])
+      if (array[j] > array[max_idx])
       {
-        min_idx = j;
+        max_idx = j;
       }
     }
     int temp = array[i];
-    array[i] = array[min_idx];
-    array[min_idx] = temp;
+    array[i] = array[max_idx];
+    array[max_idx] = temp;
   }
 
   return 0;
@@ -139,8 +139,8 @@ void main()
 
   /* Statistics and Printing Functions Go Here */
   print_array(test, SIZE);
-  // sort_array(test, SIZE);
-  // print_array(test, SIZE);
+  sort_array(test, SIZE);
+  print_array(test, SIZE);
   print_statistics(test, SIZE);
 }
 

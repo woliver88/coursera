@@ -50,6 +50,7 @@ $(TARGET): $(OBJS)
 .PHONY: memory
 memory:
 # -v will order by numberic address value (default is -n order by name)
+# displays memory location, followed by type
 	nm -v $(TARGET)
 
 .PHONY: objd 
@@ -60,6 +61,15 @@ objd:
 # -S mixes disassemble code with source code
 # -d displays assembler code for all executable sections
 # -t displays contents of symbol table
+
+# Typical appearance for -t:
+# https://stackoverflow.com/questions/6666805/what-does-each-column-of-objdumps-symbol-table-mean
+# 0000000000000000  w      *UND*  0000000000000000              __gmon_start__
+# First column: is memory location
+# 2nd: flags to indicate info - g/l global/local, d debuggin symbol, F/f File/function 
+# 3rd: location e.g. .bss / .text
+# 4rd: Size
+# 5th: Name
 
 # Typical appearance for -S:
 # 48 0f54	adds r3, #0
