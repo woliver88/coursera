@@ -25,6 +25,7 @@
 // Not essential but validates declarations match definitions etc
 // https://stackoverflow.com/questions/30817570/whats-the-benefit-for-a-c-source-file-include-its-own-header-file#:~:text=You%20don't%20have%20to,an%20implementation%20before%20finishing%20compilation.
 #include "memory.h"
+#include <stdint.h>
 
 /***********************************************************
  Function Definitions
@@ -56,4 +57,8 @@ void set_all(char *ptr, char value, unsigned int size)
 void clear_all(char *ptr, unsigned int size)
 {
   set_all(ptr, 0, size);
+}
+
+uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
+{
 }
