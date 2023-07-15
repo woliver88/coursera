@@ -81,9 +81,9 @@ MAP_FILE = $(TARGET:.out=.map)
 	$(CC:gcc=objdump) -S $< > $@
 
 %.o: %.c
-# -DVERBOSE hard coded here
+# -DVERBOSE hard coded here, as is COURSE1
 # -MMD outputs a dependcancy file, -MM outputs to stdout (the terminal logs)
-	$(CC) -c -DVERBOSE -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
+	$(CC) -c -DVERBOSE -DCOURSE1 -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Compile all object files
 .PHONY: compile-all

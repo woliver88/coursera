@@ -20,6 +20,8 @@
  */
 #ifndef __STATS_H__
 #define __STATS_H__
+#define BASE_16 (16)
+#define BASE_10 (10)
 
 /* Add Your Declarations and Function Comments here */
 unsigned char sort_array(unsigned char array[], unsigned int array_size);
