@@ -13,6 +13,7 @@
 # <Put a Description Here>
 #
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
+# e.g. >> make build PLATFORM=HOST
 #
 # Build Targets:
 #      <Put a description of the supported targets here>
@@ -90,10 +91,11 @@ compile-all: $(OBJS)
 # 	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Complete build from object files generating map file
+# -DVERBOSE hard coded here
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) -D$(PLATFORM) $(INCLUDES) $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
+	$(CC) -D$(PLATFORM) -DVERBOSE $(INCLUDES) $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
 	$(CC:gcc=size) $@
 
 # Remove all generated files
