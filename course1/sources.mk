@@ -12,7 +12,10 @@
 # Platform Specific Source and Includes
 ifeq ($(PLATFORM),HOST)
 	SRCS = 	./src/main.c 	\
-			./src/memory.c
+				./src/data.c	\
+				./src/course1.c	\
+				./src/memory.c	\
+				./src/stats.c	\
 	
 	INCLUDES =	-I./include/common 	
 
