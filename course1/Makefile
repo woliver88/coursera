@@ -65,7 +65,7 @@ ASMFILES = $(SRCS:.c=.asm)
 DFILES = $(SRCS:.c=.d)
 IFILES = $(SRCS:.c=.i)
 
-TARGET = c1m2.out
+TARGET = c1m4.out
 MAP_FILE = $(TARGET:.out=.map)
 
 # -E only runs the pre processor
