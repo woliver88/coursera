@@ -43,7 +43,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
         fin_idx++;
     }
 
-#ifdef VERBOSE
+#ifdef VERBOSE_TWO
     // prints full buffer
     for (int i = 0; i < MAX_SIZE; i++)
     {
@@ -54,7 +54,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
 
     uint8_t *new_ptr = my_reverse(buffer, MAX_SIZE);
 
-#ifdef VERBOSE
+#ifdef VERBOSE_TWO
     // prints numeric representation (ASCII character numeric values)
     for (int i = 0; i < fin_idx; i++)
     {
@@ -74,7 +74,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
     // terminate string with null ASCII char 0
     *(ptr + fin_idx + NEG) = 0;
 
-#ifdef VERBOSE
+#ifdef VERBOSE_TWO
     // print the alpha numeric character string of speified base
     for (int i = 0; i < (fin_idx + NEG); i++)
     {
@@ -115,8 +115,7 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
         sum = (sum + (val * exponent(base, exp)));
         ptr++;
 
-#ifdef VERBOSE
-        printf("ptr: %d\n", *ptr);
+#ifdef VERBOSE_TWO
         printf("takeoff: %d\n", takeoff);
         printf("val: %d\n", val);
         printf("exp: %d\n", exp);
