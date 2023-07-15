@@ -104,7 +104,7 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
     int NEG = 0;
     if (*ptr == 45)
     {
-        int NEG = 1;
+        NEG = 1;
         ptr++;
     }
 
