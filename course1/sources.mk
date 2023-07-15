@@ -18,7 +18,10 @@ ifeq ($(PLATFORM),HOST)
 
 else ifeq ($(PLATFORM),MSP432)
 	SRCS = 	./main.c 	\
+				./data.c	\
+				./course1.c	\
 				./memory.c	\
+				./stats.c	\
 				./interrupts_msp432p401r_gcc.c	\
 				./startup_msp432p401r_gcc.c		\
 				./system_msp432p401r.c

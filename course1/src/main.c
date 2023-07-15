@@ -24,11 +24,12 @@
 
 int main(void)
 {
-// -DCOURSE must be defined in Makefile
+// -DCOURSE1 must be defined in Makefile
 // #ifdef is a pre processor directive (as opposed to a normal if statement)
 #ifdef COURSE1
-  function in course1();
+  course1();
 #endif
+  return 0;
 }
 
 // #include "platform.h"

@@ -105,12 +105,14 @@ unsigned char min(unsigned char array[], unsigned int array_size)
 
 void print_array(unsigned char array[], unsigned int array_size)
 {
+#ifdef VERBOSE
   PRINTF("[");
   for (int i = 0; i < array_size; ++i)
   {
     PRINTF("%i ", array[i]);
   }
   PRINTF("]\n");
+#endif
 }
 
 void print_statistics(unsigned char array[], unsigned int array_size)
@@ -119,7 +121,7 @@ void print_statistics(unsigned char array[], unsigned int array_size)
   float median_val = median(array, array_size);
   int max_val = max(array, array_size);
   int min_val = min(array, array_size);
-// requires -DVERBOSE flag
+
 #ifdef VERBOSE
   PRINTF("The mean of this array is: %f\n", mean_val);
   PRINTF("The median of this array is: %f\n", median_val);
