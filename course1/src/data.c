@@ -125,11 +125,11 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
         printf("Value to add %d\n", val * exponent(base, exp));
         printf("Sum + Value %d\n", (sum + (val * exponent(base, exp))));
 #endif
-
-        if (NEG)
-        {
-            sum = (~sum) + 1;
-        }
     }
+    if (NEG)
+    {
+        sum = (~sum) + 1;
+    }
+
     return sum;
 }
