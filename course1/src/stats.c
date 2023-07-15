@@ -130,7 +130,7 @@ void print_statistics(unsigned char array[], unsigned int array_size)
 #endif
 }
 
-void main()
+int main(void)
 {
 
   unsigned char test[SIZE] = {34, 201, 190, 154, 8, 194, 2, 6,
@@ -146,6 +146,7 @@ void main()
   sort_array(test, SIZE);
   print_array(test, SIZE);
   print_statistics(test, SIZE);
+  return 0;
 }
 
 /* Add other Implementation File Code Here */
