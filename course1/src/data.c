@@ -83,7 +83,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
     printf("\n");
 #endif
 
-    return (fin_idx + NEG + 1);
+    return (fin_idx + 1);
 }
 
 int exponent(uint8_t value, int exp)
@@ -104,7 +104,6 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
     if (*ptr == 45)
     {
         ptr++;
-        digits -= 1;
     }
 
     int32_t sum = 0;
