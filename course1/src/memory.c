@@ -94,6 +94,7 @@ uint8_t abs_uint8_t(ptrdiff_t value)
 //       src++;
 //     }
 //   }
+//  chage to handle pointer poperly - src++ --> src +i
 //   // return dst;
 // }
 
@@ -111,7 +112,7 @@ uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
   {
     *(dst + i) = *(temp_array + i);
   }
-  // return dst;
+  return dst;
 }
 
 uint8_t *my_memcopy(uint8_t *src, uint8_t *dst, size_t length)
