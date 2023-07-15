@@ -74,28 +74,28 @@ uint8_t abs_uint8_t(ptrdiff_t value)
   return value;
 }
 
-uint8_t *my_memmove_wrong(uint8_t *src, uint8_t *dst, size_t length)
-{
-  // check difference between pointer start locations is greater than 'length'
-  // this function is incorrect - should still complete copy
-  ptrdiff_t memdif = my_memdiff(src, dst);
-  ptrdiff_t abs = abs_uint8_t(memdif);
-  if (abs < length)
-  {
-    PRINTF("Length of array: %lu\n", length);
-    PRINTF("Distance between pointers: %lu\n", abs);
-  }
-  else
-  {
-    for (int i = 0; i < length; i++)
-    {
-      *dst = *src;
-      dst++;
-      src++;
-    }
-  }
-  // return dst;
-}
+// uint8_t *my_memmove_wrong(uint8_t *src, uint8_t *dst, size_t length)
+// {
+//   // check difference between pointer start locations is greater than 'length'
+//   // this function is incorrect - should still complete copy
+//   ptrdiff_t memdif = my_memdiff(src, dst);
+//   ptrdiff_t abs = abs_uint8_t(memdif);
+//   if (abs < length)
+//   {
+//     PRINTF("Length of array: %lu\n", length);
+//     PRINTF("Distance between pointers: %lu\n", abs);
+//   }
+//   else
+//   {
+//     for (int i = 0; i < length; i++)
+//     {
+//       *dst = *src;
+//       dst++;
+//       src++;
+//     }
+//   }
+//   // return dst;
+// }
 
 uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
 {
@@ -109,8 +109,7 @@ uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
 
   for (int i = 0; i < length; i++)
   {
-    *dst = *(temp_array + i);
-    dst++;
+    *(dst + i) = *(temp_array + i);
   }
   // return dst;
 }
@@ -119,18 +118,16 @@ uint8_t *my_memcopy(uint8_t *src, uint8_t *dst, size_t length)
 {
   for (int i = 0; i < length; i++)
   {
-    *dst = *src;
-    src++;
-    dst++;
+    *(dst + i) = *(src + i);
   }
-  // return dst;
+  return dst;
 }
 
 uint8_t *my_memset(uint8_t *src, size_t length, uint8_t value)
 {
   for (int i = 0; i < length; i++)
   {
-    *(src + 1) = value;
+    *(src + i) = value;
   }
   return src;
 }
