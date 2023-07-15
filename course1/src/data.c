@@ -83,7 +83,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
     printf("\n");
 #endif
 
-    return (fin_idx + 1);
+    return (fin_idx);
 }
 
 int exponent(uint8_t value, int exp)
