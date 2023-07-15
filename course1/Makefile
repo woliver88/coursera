@@ -81,8 +81,9 @@ MAP_FILE = $(TARGET:.out=.map)
 	$(CC:gcc=objdump) -S $< > $@
 
 %.o: %.c
+# -DVERBOSE hard coded here
 # -MMD outputs a dependcancy file, -MM outputs to stdout (the terminal logs)
-	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
+	$(CC) -c -DVERBOSE -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Compile all object files
 .PHONY: compile-all
@@ -91,11 +92,10 @@ compile-all: $(OBJS)
 # 	$(CC) -c -MMD $< $(CFLAGS) $(CFLAGS_SPEC) -D$(PLATFORM) $(INCLUDES) -o $@
 
 # Complete build from object files generating map file
-# -DVERBOSE hard coded here
 .PHONY: build
 build: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) -D$(PLATFORM) -DVERBOSE $(INCLUDES) $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
+	$(CC) -D$(PLATFORM) $(INCLUDES) $^ $(CFLAGS) $(CFLAGS_SPEC) -Xlinker -Map=$(MAP_FILE) -o $@
 	$(CC:gcc=size) $@
 
 # Remove all generated files
